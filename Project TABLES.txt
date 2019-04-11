@@ -8,25 +8,23 @@ create table  user_details
  gender varchar2(10),
  city varchar2(15),
  state varchar2(20),
- user_id varchar2(10) unique,
  password varchar2(20),
- primary_id number(10) Primary key
+ primary_id varchar2(10) Primary key
 )
  ;	
 
 
 
 SQL> desc user_details;
- Name                                                                                                                                            Null?    Type
- ----------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------
- FNAME                                                                                                                                           NOT NULL VARCHAR2(15)
- LNAME                                                                                                                                                    VARCHAR2(15)
- AGE                                                                                                                                                      NUMBER(3)
- CONTACT_NO                                                                                                                                               NUMBER(10)
- EMAIL_ID                                                                                                                                                 VARCHAR2(25)
- GENDER                                                                                                                                                   VARCHAR2(10)
- CITY                                                                                                                                                     VARCHAR2(15)
- STATE                                                                                                                                                    VARCHAR2(20)
- USER_ID                                                                                                                                                  VARCHAR2(10)
- PASSWORD                                                                                                                                                 VARCHAR2(20)
- PRIMARY_ID                                                                                                                                      NOT NULL NUMBER(20)
+ Name                                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------
+ FNAME                                                                                                                             NOT NULL VARCHAR2(15)
+ LNAME                                                                                                                                      VARCHAR2(15)
+ AGE                                                                                                                                        NUMBER(3)
+ CONTACT_NO                                                                                                                                 NUMBER(10)
+ EMAIL_ID                                                                                                                                   VARCHAR2(25)
+ GENDER                                                                                                                                     VARCHAR2(10)
+ CITY                                                                                                                                       VARCHAR2(15)
+ STATE                                                                                                                                      VARCHAR2(20)
+ PASSWORD                                                                                                                                   VARCHAR2(20)
+ PRIMARY_ID                                                                                                                        NOT NULL VARCHAR2(10)
