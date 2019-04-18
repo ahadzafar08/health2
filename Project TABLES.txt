@@ -9,22 +9,67 @@ create table  user_details
  city varchar2(15),
  state varchar2(20),
  password varchar2(20),
- primary_id varchar2(10) Primary key
-)
- ;	
+ user_id varchar2(10) Primary key,
+SECURITY_QUESTION varchar2(30),
+SECURITY_ANSWER varchar2(30)
+);	
 
 
 
 SQL> desc user_details;
- Name                                                                                                                              Null?    Type
- ----------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------
- FNAME                                                                                                                             NOT NULL VARCHAR2(15)
- LNAME                                                                                                                                      VARCHAR2(15)
- AGE                                                                                                                                        NUMBER(3)
- CONTACT_NO                                                                                                                                 NUMBER(10)
- EMAIL_ID                                                                                                                                   VARCHAR2(25)
- GENDER                                                                                                                                     VARCHAR2(10)
- CITY                                                                                                                                       VARCHAR2(15)
- STATE                                                                                                                                      VARCHAR2(20)
- PASSWORD                                                                                                                                   VARCHAR2(20)
- PRIMARY_ID                                                                                                                        NOT NULL VARCHAR2(10)
+ Name                                                                                                      Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ FNAME                                                                                                     NOT NULL VARCHAR2(15)
+ LNAME                                                                                                              VARCHAR2(15)
+ AGE                                                                                                                NUMBER(3)
+ CONTACT_NO                                                                                                         NUMBER(10)
+ EMAIL_ID                                                                                                           VARCHAR2(50)
+ GENDER                                                                                                             VARCHAR2(10)
+ CITY                                                                                                               VARCHAR2(15)
+ STATE                                                                                                              VARCHAR2(20)
+ PASSWORD                                                                                                           VARCHAR2(20)
+ USER_ID                                                                                                   NOT NULL  VARCHAR2(10)		//PRIMARY KEY
+ SECURITY_QUESTION                                                                                                  VARCHAR2(30)
+ SECURITY_ANSWER                                                                                          	    VARCHAR2(30)
+____-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ create table bmi_values
+    (
+	user_id varchar2(10) references user_details(user_id),
+    	height number(10,2),
+    	weight number(10,2),
+    	bmi number(10,2),
+ 	time varchar2(20),
+	localdate date
+    );
+
+
+
+
+_____________________________
+select bmi_values.bmi,user_details.fname,bloodcount_values.wbc,bloodcount_values.rbc,glucose_values.bgl from bmi_values,bloodcount_values,glucose_values,user_details 
+where user_details.user_id=bmi_values.user_id AND user_details.user_id=bloodcount_values.user_id AND user_details.user_id=glucose_values.user_id ; 
+
+
+____________________________________________________________________________________________
+
+ create table glucose_values
+    (
+    user_id varchar2(10) references user_details(user_id),
+    time varchar2(10),
+    bgl number(10));
+
+____________________________________________
+
+ create table bloodcount_values
+    (
+    user_id varchar2(10) references user_details(user_id),
+    wbc number(10,2),
+    rbc number(10,2),
+	platlets number(10,2),
+	cTime varchar2(10),
+	cDate Date
+	);
+
+
+
